@@ -6,7 +6,7 @@ import os
 # costanti di connessione
 my_ip = "192.168.0.110"
 my_port = 65432
-key_c = 2
+key_c = 3
 file_dest = "ricevuto.jpg"
 
 ENCRYPTED = "encrypted_rcv"
