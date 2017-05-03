@@ -4,7 +4,7 @@ import hashlib
 import os
 
 # costanti di connessione
-my_ip = "192.168.0.110"
+my_ip = "192.168.0.115"
 my_port = 65432
 key_c = 3
 file_dest = "ricevuto.jpg"
@@ -114,18 +114,21 @@ if __name__ == '__main__':
 
         data = clientsocket.recv(32)
         md5_old = data.decode()
-        print('arrivato MD5')
+        print('arrivato MD5 ' + md5_old)
+
         data = clientsocket.recv(1)
         padding = int(data.decode())
-        print('arrivato padding')
+        print('arrivato padding ', padding)
+
         data = clientsocket.recv(20)
         size = int(data.decode())
         print('size:',size)
+
+
         while bytes_read < size:
             data = clientsocket.recv(1024)
             f.write(data)
             bytes_read += len(data)
-            #print(data)
 
     s.close()
     
