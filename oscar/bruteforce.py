@@ -31,7 +31,7 @@ def get_md5(path):
     return md5.hexdigest()
 
 def function(block,key):
-    nk = 3*key**4
+    nk = 8*key**5
     bk = bin(nk)[2:]
     bk = bk[-32:] #32 bit meno significativi
     bk = bk.zfill(32)
@@ -79,7 +79,7 @@ def feistel_blocks(path,keys,padding):
 ########### stampa elaborazione avanzamento
             value = int(bytes_read/size*100)
             if (value!=last_value):
-                print(value,'%    ',bytes_read,'/',size,'con chiave',keys[0])
+                print('Loading...   ', value, ' / 100  con chiave ', keys[0])
                 last_value = value
 
 def generate_keys(original):

@@ -2,7 +2,7 @@ import sys, socket, pcapy, bruteforce
 from struct import *
 
 sniff_path = "sniffed_crypted.jpg"
-ip_victim = '192.168.0.115'
+ip_victim = '192.168.55.150'
 md5_old = ''
 padding = 0
 size = 0
@@ -60,7 +60,7 @@ if __name__ == '__main__':
                         #print(len(data))
                         #print(data)
 
-    print('- Dati Ricevuti tot = ', byte_read)
+    print('Dati Ricevuti tot = ', byte_read)
 
     total_keys = 2 ** 32
     print("si provano tutte le chiavi da 1 a 2^32 ")
