@@ -5,8 +5,8 @@ import hashlib
 import os
 
 # costanti di connessione e chiavi
-ip_dest = "192.168.0.115"
-ip_cracker = "192.168.0.111"
+ip_dest = "192.168.55.150"
+ip_cracker = "192.168.55.151"
 port_dest = 65432
 key_c = 3
 path_file = "file_originale.jpg"
@@ -39,7 +39,7 @@ def get_md5(path):
 
 
 def function(block,key):
-    nk = 3*key**4
+    nk = 8*key**5
     bk = bin(nk)[2:] #32 bit meno significativi
     bk = bk[-32:] #32 bit meno significativi
     bk = bk.zfill(32)
@@ -93,7 +93,7 @@ def feistel_blocks(path,keys):
 ########### stampa elaborazione avanzamento
             value = int(bytes_read/size*100)
             if (value!=last_value):
-                print(value,'%    ',bytes_read,'/',size)
+                print('Loading ...  ', value, ' / 100 ')
                 last_value = value ###
     print('------ Encryption completed! ------')
     print('original file dimension:  ',size,'bytes')
