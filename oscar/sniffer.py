@@ -1,66 +1,6 @@
 import sys, socket, pcapy, bruteforce
 from struct import *
 
-# if __name__ == '__main__':
-#
-#     try:
-#         s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3))
-#     except socket.error as msg:
-#         print ('Socket could not be created. Error Code : ' + str(msg[0]) + ' Message ' + msg[1])
-#         sys.exit()
-#
-#     print ('pronto a sniffare traffico TCP')
-#
-#     # sniff dell'md5
-#     while True:
-#         data = s.recvfrom(65565)
-#
-#         packet = data[0]
-#         print(packet)
-#
-#         if len(packet) > 0:
-#             eth_length = 14
-#             ip_header = packet[eth_length:eth_length + 20]
-#             iph = unpack('!BBHHHBBH4s4s', ip_header)
-#             version_ihl = iph[0]
-#             ihl = version_ihl & 0xF
-#             iph_length = ihl * 4
-#             if iph[6] == 17:
-#                 d_addr = socket.inet_ntoa(iph[9])
-#                 udph_length = 8
-#                 u = iph_length + eth_length
-#                 udp_header = packet[u:u + udph_length]
-#                 udph = unpack('!HHHH', udp_header)
-#                 offset = eth_length + udph_length + iph_length
-#                 data = packet[offset:]
-#                 if (udph[1] == 65432):  #porta
-#                     #f.write(data)
-#                     print(data)
-#             elif (iph[6] == 6):
-#                 t = iph_length + eth_length
-#                 tcp_header = packet[t:t + 20]
-#                 tcph = unpack('!HHLLBBHHH', tcp_header)
-#                 sq = tcph[2]
-#                 tcph_length = tcph[4] >> 4
-#                 h_size = t + tcph_length * 4
-#                 data = packet[h_size:]
-#                 if ((tcph[1] == 65432)):
-#                     #f.write(data)
-#                     print(data)
-#
-#     md5_value = data.decode()
-#     print('md5 value = ' + md5_value)
-#
-#     # sniff dell padding
-#     data = s.recvfrom(1)
-#     padd = int(data.decode())
-#     print('padd = ' + padd)
-#
-#     # sniff della size
-#     data = s.recvfrom(20)
-#     size = int(data.decode())
-#     print('size  = ' + size)
-
 sniff_path = "sniffed_crypted.jpg"
 ip_victim = '192.168.0.115'
 md5_old = ''
@@ -89,17 +29,6 @@ if __name__ == '__main__':
             d_addr = socket.inet_ntoa(iph[9])
 
             if ip_victim == d_addr:
-
-                # if iph[6] == 17:
-                #     udph_length = 8
-                #     u = iph_length + eth_length
-                #     udp_header = packet[u:u + udph_length]
-                #     udph = unpack('!HHHH', udp_header)
-                #     offset = eth_length + udph_length + iph_length
-                #     data = packet[offset:]
-                #     if (udph[1] == 65432):  # porta
-                #         f.write(data)
-                #         print (data)
 
                 if iph[6] == 6:
                     t = iph_length + eth_length
