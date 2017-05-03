@@ -5,7 +5,7 @@ import hashlib
 import os
 
 # costanti di connessione e chiavi
-ip_dest = "192.168.0.110"
+ip_dest = "192.168.0.115"
 ip_cracker = "192.168.0.111"
 port_dest = 65432
 key_c = 3
@@ -146,9 +146,11 @@ if __name__ == '__main__':
     else:
 
         #invio md5 e file criptato
-        s.send(md5_orig.zfill(32).encode())
-        s.send(str(pad).encode())
-        s.send(str(enc_size).zfill(20).encode())
+
+        s.sendall(md5_orig.zfill(32).encode())
+        s.sendall(str(pad).encode())
+        s.sendall(str(enc_size).zfill(20).encode())
+
 
         tot_dim = os.stat(ENCRYPTED+get_ext(path_file)).st_size
         tot_send = 0
@@ -170,9 +172,9 @@ if __name__ == '__main__':
     else:
 
         # invio md5 e file criptato
-        s.send(md5_orig.zfill(32).encode())
-        s.send(str(pad).encode())
-        s.send(str(enc_size).zfill(20).encode())
+        s.sendall(md5_orig.zfill(32).encode())
+        s.sendall(str(pad).encode())
+        s.sendall(str(enc_size).zfill(20).encode())
 
         tot_dim = os.stat(ENCRYPTED + get_ext(path_file)).st_size
         tot_send = 0
