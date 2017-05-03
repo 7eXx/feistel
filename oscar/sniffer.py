@@ -60,7 +60,7 @@ if __name__ == '__main__':
                         #print(len(data))
                         #print(data)
 
-    print('- Dati Ricevuti -')
+    print('- Dati Ricevuti tot = ', byte_read)
 
     total_keys = 2 ** 32
     print("si provano tutte le chiavi da 1 a 2^32 ")
